@@ -7,7 +7,10 @@
 
 enum Control
 {
-    PREVIOUS, NEXT, UP, DOWN
+    NEXT,
+    PREVIOUS,
+    DOWN,
+    UP,
 };
 
 class MenuItem
@@ -34,7 +37,7 @@ public:
     uint16_t fgColor = ST7735_WHITE;
 
     ST7735_Simple_Menu(Adafruit_ST7735 *tft);
-    ST7735_Simple_Menu &setItems(MenuItem menu[]);
+    ST7735_Simple_Menu &setItems(MenuItem menu[], uint8_t menuSize);
     ST7735_Simple_Menu &setPreviousPressedCallback(voidFuncPtr callback);
     ST7735_Simple_Menu &setHeader(char *header);
     ST7735_Simple_Menu &init();

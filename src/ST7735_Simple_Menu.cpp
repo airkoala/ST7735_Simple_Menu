@@ -16,11 +16,12 @@ MenuItem &MenuItem::addCallback(voidFuncPtr callback)
 
 ST7735_Simple_Menu::ST7735_Simple_Menu(Adafruit_ST7735 *tft) : tft(tft) {}
 
-ST7735_Simple_Menu &ST7735_Simple_Menu::setItems(MenuItem menu[])
+ST7735_Simple_Menu &ST7735_Simple_Menu::setItems(MenuItem menu[], uint8_t menuSize)
 {
     this->menu = menu;
-    // this->menuSize = sizeof(menu) / sizeof(menu[0]);
-    this->menuSize = 3;
+    this->menuSize = menuSize;
+    Serial.println(menuSize);
+    // this->menuSize = 3;
     return *this;
 }
 
@@ -34,6 +35,8 @@ ST7735_Simple_Menu &ST7735_Simple_Menu::init()
 {
     if (header != nullptr)
     {
+        tft->fillScreen(bgColor);
+
         tft->setCursor(0, 0);
         tft->setTextSize(2);
         tft->setTextColor(fgColor);
